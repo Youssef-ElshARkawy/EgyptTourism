@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+:root {
+
+    --blonde-50: #FFF9E6;
+    --blonde-100: #FFF2CC;
+    --blonde-200: #FFE699;
+    --blonde-300: #FFDB66;
+    --blonde-400: #FFD033;
+    --blonde-500: #D4AF37;
+
+    --blonde-600: #C19A2E;
+    --blonde-700: #A8841F;
+    --blonde-800: #8C6F1A;
+    --blonde-900: #6E5513;
+
+}
+
+@theme {
+  --color-primary-50: #FFF9E6;
+  --color-primary-100: #FFF2CC;
+  --color-primary-200: #FFE699;
+  --color-primary-300: #FFDB66;
+  --color-primary-400: #FFD033;
+  --color-primary-500: #D4AF37;
+  --color-primary-600: #C19A2E;
+  --color-primary-700: #A8841F;
+  --color-primary-800: #8C6F1A;
+  --color-primary-900: #6E5513;
+}
+
+
+@layer base {
+    body {
+         background: #0B0B0B; 
+        
+    } 
+    .text-blond-50{
+        color: var(--blonde-50);
+    }
+    .text-blond-100{
+        color: var(--blonde-100);
+    }
+    .text-blond-200{
+        color: var(--blonde-200);
+    }
+    .text-blond-300{
+        color: var(--blonde-300);
+    }
+    .text-blond-400{
+        color: var(--blonde-400);
+    }
+    .text-blond-500{
+        color: var(--blonde-500);
+    }
+    .text-blond-600{
+        color: var(--blonde-600);
+    }
+    .text-blond-700{
+        color: var(--blonde-700);
+    }
+    .text-blond-800{
+        color: var(--blonde-800);
+    }
+    .text-blond-900{
+        color: var(--blonde-900);
+    } 
+
+
+    h1 {
+        color: var(--blonde-400);
+    }
+
+    button {
+        background: var(--blonde-500);
+        color: black;
+    }
+
+    button:hover {
+        background: var(--blonde-300);
+    }
+
+    span,
+    a {
+        @apply inline-block;
+    }
+
+    button,
+    a {
+        @apply cursor-pointer;
+    }
+
+    input:focus,
+    textarea:focus {
+        @apply outline-none;
+    }
+}
+
+@layer utilities {
+    .container {
+        @apply max-w-7xl mx-auto px-4 mt-5;
+    }
+}
+
+
+
+/* From Uiverse.io by Yaya12085 */ 
+.button {
+  width: fit-content;
+  display: flex;
+  padding: 1em 1rem;
+  cursor: pointer;
+  gap: 0.4rem;
+  font-weight: bold;
+  border-radius: 30px;
+  text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+  background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+  background-size: 300%;
+  color: #fff;
+  border: none;
+  background-position: left center;
+  box-shadow: 0 30px 10px -20px rgba(0,0,0,.2);
+  transition: background .3s ease;
+}
+
+.button:hover {
+  background-size: 320%;
+  background-position: right center;
+}
+
+.button:hover svg {
+  fill: #fff;
+}
+
+.button svg {
+  width: 23px;
+  fill: #f09f33;
+  transition: .3s ease;
+}
+
+/* From Uiverse.io by vikiWayne */ 
+.btn {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #dac690;
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #2c9caf;
+}
+
+.btn:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #70bdca;
+  box-shadow: 4px 5px 17px -4px #268391;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #2c9caf;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.btn:hover::before {
+  width: 250%;
+}
+
+
+.swiper-pagination-bullet{
+width: 12px !important;
+height: 12px !important;
+background-color: rgba(255,255,255,0.6);
+opacity: 1 !important;
+transition: all 0.3s ease;
+}
+.swiper-pagination-bullet:hover{
+    background-color:rgba(255,255,255,0.8) !important;
+    transform: scale(1.1);
+}
+.swiper-pagination-bullet-active{
+    background-color: rgba(255,255,255,1) !important;
+    width: 32px !important;
+    border-radius: 6px !important;
+}
