@@ -16,11 +16,11 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: _buildAppBar(context, isDark),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+      body: const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             SliderWidget(),
             SizedBox(height: AppSpacing.lg),
             FeaturesWidget(),
