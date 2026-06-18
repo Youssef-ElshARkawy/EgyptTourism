@@ -1,3 +1,7 @@
+import 'search_screen.dart';
+import 'saved_screen.dart';
+import 'profile_screen.dart';
+import 'explore_screen.dart';
 import 'package:flutter/material.dart';
 import '../app.dart';
 import '../widgets/slider_widget.dart';
@@ -16,11 +20,11 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: _buildAppBar(context, isDark),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+      body: const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             SliderWidget(),
             SizedBox(height: AppSpacing.lg),
             FeaturesWidget(),
@@ -62,33 +66,15 @@ class HomeScreen extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.search,
               color: isDark ? AppTheme.textPrimaryDk : AppTheme.textPrimary),
-          onPressed: () {},
-        ),
-
-        // Dark / Light mode toggle
-        ValueListenableBuilder<ThemeMode>(
-          valueListenable: themeNotifier,
-          builder: (context, mode, _) {
-            return IconButton(
-              tooltip: mode == ThemeMode.light
-                  ? 'Switch to Dark Mode'
-                  : 'Switch to Light Mode',
-              icon: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 300),
-                child: Icon(
-                  mode == ThemeMode.light
-                      ? Icons.dark_mode_outlined
-                      : Icons.light_mode_outlined,
-                  key: ValueKey(mode),
-                  color: isDark ? AppTheme.textPrimaryDk : AppTheme.textPrimary,
-                ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SearchScreen(),
               ),
-              onPressed: themeNotifier.toggle,
             );
           },
         ),
-
-        const SizedBox(width: 4),
       ],
     );
   }
@@ -101,6 +87,32 @@ class HomeScreen extends StatelessWidget {
       unselectedFontSize: 11,
       elevation: 12,
       currentIndex: 0,
+      onTap: (index) {
+        if (index == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ExploreScreen(),
+            ),
+          );
+        }
+        if (index == 3) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ProfileScreen(),
+            ),
+          );
+        }
+        if (index == 2) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SavedScreen(),
+            ),
+          );
+        }
+      },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
         BottomNavigationBarItem(
