@@ -29,7 +29,7 @@ class AllGovernoratesScreen extends StatelessWidget {
     {'name': 'Port Said', 'image': 'assets/Governrates/Port_said.jpg'},
     {'name': 'Qalyubia', 'image': 'assets/Governrates/Qalyubia.jpg'},
     {'name': 'Qena', 'image': 'assets/Governrates/Qena.jpg'},
-    {'name': 'Red Sea', 'image': 'assets/Governrates/Red_Sea.jpg'},
+    {'name': 'Red Sea', 'image': 'assets/Governrates/Red Sea.jpg'},
     {'name': 'Sharqia', 'image': 'assets/Governrates/Sharqia.jpg'},
     {'name': 'Sohag', 'image': 'assets/Governrates/Sohag.jpg'},
     {'name': 'South Sinai', 'image': 'assets/Governrates/South_Sinai.jpg'},
