@@ -58,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Momen Kilany",
+                    "User",
                     style: TextStyle(
                       color: Theme.of(context).textTheme.bodyLarge?.color,
                       fontSize: 28,
@@ -67,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    "momenkilany@gmail.com",
+                    "user321@gmail.com",
                     style: TextStyle(
                       color: Theme.of(context).textTheme.bodyMedium?.color,
                       fontSize: 16,
