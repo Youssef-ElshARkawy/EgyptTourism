@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../app.dart';
 import '../models/hotels.dart';
+import 'hotels_details_screen.dart';
 
 class HotelsScreen extends StatelessWidget {
   const HotelsScreen({super.key});
@@ -43,99 +44,107 @@ class _HotelCard extends StatelessWidget {
     final cardColor = isDark ? const Color(0xFF1E1E1E) : AppTheme.surface;
     final borderColor = isDark ? const Color(0xFF2A2A2A) : AppTheme.divider;
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: borderColor),
-      ),
-      child: Row(
-        children: [
-          // Hotel image
-          ClipRRect(
-            borderRadius:
-                const BorderRadius.horizontal(left: Radius.circular(16)),
-            child: Image.asset(
-              hotel.imageUrl,
-              width: 110,
-              height: 110,
-              fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => HotelDetailsScreen(hotel: hotel)),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: borderColor),
+        ),
+        child: Row(
+          children: [
+            // Hotel image
+            ClipRRect(
+              borderRadius:
+                  const BorderRadius.horizontal(left: Radius.circular(16)),
+              child: Image.network(
+                hotel.imageUrl,
                 width: 110,
                 height: 110,
-                color: AppTheme.secondary,
-                child: const Icon(Icons.hotel, color: Colors.white38, size: 32),
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Container(
+                  width: 110,
+                  height: 110,
+                  color: AppTheme.secondary,
+                  child: const Icon(Icons.hotel, color: Colors.white38, size: 32),
+                ),
               ),
             ),
-          ),
 
-          // Hotel info
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    hotel.name,
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: textColor),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Icon(Icons.location_on, size: 13, color: subColor),
-                      const SizedBox(width: 2),
-                      Text(hotel.location,
-                          style: TextStyle(fontSize: 12, color: subColor)),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: AppTheme.primary.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(6),
+            // Hotel info
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      hotel.name,
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: textColor),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Icon(Icons.location_on, size: 13, color: subColor),
+                        const SizedBox(width: 2),
+                        Text(hotel.location,
+                            style: TextStyle(fontSize: 12, color: subColor)),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: AppTheme.primary.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(Icons.star_rounded,
+                                  color: AppTheme.primary, size: 13),
+                              const SizedBox(width: 2),
+                              Text(hotel.rating.toString(),
+                                  style: const TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppTheme.primary)),
+                            ],
+                          ),
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(Icons.star_rounded,
-                                color: AppTheme.primary, size: 13),
-                            const SizedBox(width: 2),
-                            Text(hotel.rating.toString(),
-                                style: const TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppTheme.primary)),
-                          ],
+                        const Spacer(),
+                        Text(
+                          '${hotel.pricePerNight} EGP',
+                          style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: AppTheme.primary),
                         ),
-                      ),
-                      const Spacer(),
-                      Text(
-                        '${hotel.pricePerNight} EGP',
-                        style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: AppTheme.primary),
-                      ),
-                      Text(' /night',
-                          style: TextStyle(fontSize: 11, color: subColor)),
-                    ],
-                  ),
-                ],
+                        Text(' /night',
+                            style: TextStyle(fontSize: 11, color: subColor)),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
